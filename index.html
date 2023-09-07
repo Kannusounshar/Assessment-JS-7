@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=j, initial-scale=1.0" />
+    <title>JAVASCRIPT ASSESSMENT</title>
+  </head>
+  <body>
+    <script>
+      //              1. String Reversal with Slice: Write a function that reverses a string using the slice method.
+
+      //         Question: Reverse the string "hello world".
+
+      //         Expected Output: "dlrow olleh"
+      function reverseStringWithSlice(inputString) {
+        // Use slice to reverse the string
+        const reversedString = inputString.split("").reverse().join("");
+        return reversedString;
+      }
+
+      const input = "hello world";
+      const reversed = reverseStringWithSlice(input);
+      console.log(reversed);
+
+      //         2.String Substring Extract and Concatenate: Create a function that extracts substrings from two given strings and concatenates them.
+
+      //         Question: Extract a substring from "abcdef" starting at index 2 and concatenate it with a 	substring from "123456" starting at index 1
+
+      //         Expected Output: "c23456"
+      function extractAndConcatenate(str1, str2, index1, index2) {
+        // Extract substrings from the given indices
+        const substring1 = str1.substring(index1);
+        const substring2 = str2.substring(index2);
+
+        // Concatenate the substrings
+        const result = substring1 + substring2;
+        return result;
+      }
+
+      const string1 = "abcdef";
+      const string2 = "123456";
+      const index1 = 2;
+      const index2 = 1;
+
+      const concatenatedString = extractAndConcatenate(
+        string1,
+        string2,
+        index1,
+        index2
+      );
+      console.log(concatenatedString);
+
+      //         3.String Trim and Concatenate with Custom Separator: Implement a function that trims spaces from both ends of two strings, concatenates them with a custom separator, and removes any extra spaces.
+
+      //         Question: Trim and concatenate the strings " Hello" and "world! " with a hyphen as the 	separator.
+
+      //         Expected Output: "Hello-world!"
+      function trimConcatWithSeparator(str1, str2, separator) {
+        // Trim spaces from both strings
+        const trimmedStr1 = str1.trim();
+        const trimmedStr2 = str2.trim();
+
+        // Concatenate the trimmed strings with the separator and remove extra spaces
+        const result = `${trimmedStr1}${separator}${trimmedStr2}`.replace(
+          /\s+/g,
+          " "
+        );
+
+        return result;
+      }
+
+      const string1 = " Hello";
+      const string2 = "world! ";
+      const separator = "-";
+
+      const concatenatedString = trimConcatWithSeparator(
+        string1,
+        string2,
+        separator
+      );
+      console.log(concatenatedString);
+
+      //         4.String Concatenation with Repeated Substring: Write a function that uses the concat method to concatenate a substring of a string with itself a certain number of times.
+
+      //         Question: Concatenate the substring "abc" with itself 4 times.
+
+      //         Expected Output: "abcabcabcabc"
+      function repeatSubstring(substring, times) {
+        let result = "";
+        for (let i = 0; i < times; i++) {
+          result = result.concat(substring);
+        }
+        return result;
+      }
+
+      const substring = "abc";
+      const repeatCount = 4;
+
+      const concatenatedString = repeatSubstring(substring, repeatCount);
+      console.log(concatenatedString);
+
+      //         5.String Word Count and Concatenate: Create a function that counts the number of words in a sentence and then concatenates each word with the word "ing".
+
+      //         Question: Count words in the sentence "Coding is fun and rewarding!" and concatenate each 	word with "ing".
+
+      //         Expected Output: "Codinging ising funing anding rewardinging!"
+      function wordCountAndConcatenate(sentence) {
+        // Split the sentence into words
+        const words = sentence.split(" ");
+
+        // Count the number of words
+        const wordCount = words.length;
+
+        // Concatenate each word with "ing"
+        const concatenatedSentence = words
+          .map((word) => word + "ing")
+          .join(" ");
+
+        return {
+          wordCount: wordCount,
+          concatenatedSentence: concatenatedSentence,
+        };
+      }
+
+      const sentence = "Coding is fun and rewarding!";
+      const result = wordCountAndConcatenate(sentence);
+
+      console.log("Word Count:", result.wordCount);
+      console.log("Concatenated Sentence:", result.concatenatedSentence);
+
+      //         6.String Dynamic Slicing and Concatenation: Implement a function that extracts a dynamic substring from a string using the slice method and then concatenates it with another string.
+
+      //         Question: Extract a substring from "abcdefgh" starting at index 3 and ending at the index of "ef" 	in the same string. Concatenate it with "123".
+
+      //         Expected Output: "def123"
+      function extractAndConcatenate(
+        inputString,
+        startIndex,
+        endIndex,
+        concatString
+      ) {
+        // Extract the dynamic substring using slice
+        const dynamicSubstring = inputString.slice(startIndex, endIndex);
+
+        // Concatenate it with the provided string
+        const result = dynamicSubstring + concatString;
+
+        return result;
+      }
+
+      const input = "abcdefgh";
+      const startIndex = 3;
+      const endIndex = input.indexOf("ef") + 2; // Get the index of "ef" and add 2 to include "ef" in the substring
+      const concatString = "123";
+
+      const concatenatedString = extractAndConcatenate(
+        input,
+        startIndex,
+        endIndex,
+        concatString
+      );
+      console.log(concatenatedString);
+
+      //         7. String Substring from the End: Write a function that extracts a substring from the end of a string using the slice method.
+
+      //         Question: Extract the last 3 characters from the string "programming".
+
+      //         Expected Output: "ing"
+      function extractSubstringFromEnd(inputString, length) {
+        // Calculate the negative start index
+        const startIndex = -length;
+
+        // Use slice to extract the substring from the end
+        const extractedSubstring = inputString.slice(startIndex);
+
+        return extractedSubstring;
+      }
+
+      const input = "programming";
+      const length = 3;
+
+      const extractedSubstring = extractSubstringFromEnd(input, length);
+      console.log(extractedSubstring);
+
+      //         8. String Start and End Check: Create a function that checks if a given string starts with "http://" and ends with ".com" using the startsWith and endsWith methods.
+
+      //         Question: Check if the string "http://www.example.com" starts with "http://" and ends with 	".com".
+
+      //         Expected Output: true
+      function startsWithHttpAndEndsWithCom(inputString) {
+        const startsWithHttp = inputString.startsWith("http://");
+        const endsWithCom = inputString.endsWith(".com");
+
+        return startsWithHttp && endsWithCom;
+      }
+
+      const input = "http://www.example.com";
+      const isMatch = startsWithHttpAndEndsWithCom(input);
+      console.log(isMatch);
+
+      //         9. String Search and Concatenation: Implement a function that searches for a given keyword in a sentence, extracts the keyword using the slice method, and concatenates it with "ing".
+
+      //         Question: Search for the keyword "exciting" in the sentence "Learning new skills is always 	exciting!" and concatenate it with "ing".
+
+      //         Expected Output: "excitinging"
+      function searchAndConcatenate(keyword, sentence) {
+        // Search for the keyword in the sentence
+        const startIndex = sentence.indexOf(keyword);
+
+        if (startIndex !== -1) {
+          // Extract the keyword and concatenate it with "ing"
+          const extractedKeyword = sentence.slice(
+            startIndex,
+            startIndex + keyword.length
+          );
+          const concatenatedResult = extractedKeyword + "ing";
+          return concatenatedResult;
+        } else {
+          return "Keyword not found";
+        }
+      }
+
+      const keyword = "exciting";
+      const sentence = "Learning new skills is always exciting!";
+
+      const result = searchAndConcatenate(keyword, sentence);
+      console.log(result);
+
+      //         10. String Concatenation with Reversed Substrings: Write a function that concatenates two strings, where the second string is the reverse of the first string.
+
+      //         Question: Concatenate the strings "abcdef" and the reverse of "abcdef".
+
+      //         Expected Output: "abcdeffedcba"
+      //
+      function concatenateWithReverse(str1, str2) {
+        // Reverse the second string
+        const reversedStr2 = str2.split("").reverse().join("");
+
+        // Concatenate the first string and the reversed second string
+        const result = str1 + reversedStr2;
+
+        return result;
+      }
+
+      const string1 = "abcdef";
+      const string2 = "fedcba";
+
+      const concatenatedString = concatenateWithReverse(string1, string2);
+      console.log(concatenatedString);
+    </script>
+  </body>
+</html>
